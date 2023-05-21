@@ -1,0 +1,129 @@
+<div class="card p-3">
+  <h3>Cadastrar Caronas</h3>
+  <hr />
+  <form [formGroup]="form">
+    <div class="row">
+      <h5>Dados dos Pais</h5>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Nome Completo</label>
+        <input type="text" class="form-control" placeholder="Nome Completo" />
+      </div>
+
+      <div class="col-md-3 mb-3">
+        <label class="form-label">CPF</label>
+        <input type="text" class="form-control" placeholder="CPF" />
+      </div>
+
+      <div class="col-md-3 mb-3">
+        <label class="form-label">CNH</label>
+        <input type="text" class="form-control" placeholder="CNH" />
+      </div>
+
+      <div class="col-md-7 mb-3">
+        <label class="form-label">Logradouro</label>
+        <input type="text" class="form-control" placeholder="Logradouro" />
+      </div>
+
+      <div class="col-md-2 mb-3">
+        <label class="form-label">N°</label>
+        <input type="text" class="form-control" placeholder="N°" />
+      </div>
+
+      <div class="col-md-3 mb-3">
+        <label class="form-label">CEP</label>
+        <input type="text" class="form-control" placeholder="CEP" />
+      </div>
+
+      <div class="col-md-5 mb-3">
+        <label class="form-label">Bairro</label>
+        <input type="text" class="form-control" placeholder="Bairro" />
+      </div>
+
+      <div class="col-md-5 mb-3">
+        <label class="form-label">Cidade</label>
+        <input type="text" class="form-control" placeholder="Cidade" />
+      </div>
+
+      <div class="col-md-2 mb-3">
+        <label class="form-label">UF</label>
+        <input type="text" class="form-control" placeholder="UF" />
+      </div>
+    </div>
+    <hr />
+    <div class="d-flex justify-content-between">
+      <h5>Dados dos Filhos</h5>
+
+      <!-- Button trigger modal -->
+
+      <button
+        data-toggle="modal"
+        data-target="#exampleModalCenter"
+        type="button"
+        class="btn btn-primary"
+      >
+        Adicionar Filho
+      </button>
+    </div>
+    <div class="row"></div>
+  </form>
+</div>
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModalCenter"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Adicionar Filho</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formModal">
+          <div class="row">
+            <div class="col-md-9 mb-3">
+              <label class="form-label">Nome Completo</label>
+              <input
+                formControlName="nome"
+                type="text"
+                class="form-control"
+                placeholder="Nome Completo"
+              />
+            </div>
+
+            <div class="col-md-3 mb-3">
+              <label class="form-label">Idade</label>
+              <input
+                formControlName="idade"
+                type="text"
+                class="form-control"
+                placeholder="Idade"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Cancelar
+        </button>
+        <button (click)="addFilho()" type="button" class="btn btn-primary">
+          Salvar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
