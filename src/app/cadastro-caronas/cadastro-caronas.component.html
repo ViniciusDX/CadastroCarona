@@ -1,5 +1,12 @@
 <div class="card p-3">
-  <h3>Cadastrar Caronas</h3>
+  <div class="title-content">
+    <img
+      class="img-form"
+      src="../../assets/carro-na-rua-icon-ilustracao-carro-e-luz-de-rua-transporte-icone-branco-isolado_138676-395.avif"
+      alt="img-formulario"
+    />
+    <h3>Cadastrar Caronas</h3>
+  </div>
   <hr />
   <form [formGroup]="form">
     <div class="row">
@@ -8,47 +15,95 @@
     <div class="row">
       <div class="col-md-6 mb-3">
         <label class="form-label">Nome Completo</label>
-        <input type="text" class="form-control" placeholder="Nome Completo" />
+        <input
+          formControlName="nome"
+          type="text"
+          class="form-control"
+          placeholder="Nome Completo"
+        />
       </div>
 
       <div class="col-md-3 mb-3">
         <label class="form-label">CPF</label>
-        <input type="text" class="form-control" placeholder="CPF" />
+        <input
+          formControlName="cpf"
+          mask="000.000.000-00"
+          type="text"
+          class="form-control"
+          placeholder="CPF"
+        />
       </div>
 
       <div class="col-md-3 mb-3">
         <label class="form-label">CNH</label>
-        <input type="text" class="form-control" placeholder="CNH" />
+        <input
+          formControlName="cnh"
+          type="text"
+          class="form-control"
+          placeholder="CNH"
+        />
       </div>
 
       <div class="col-md-7 mb-3">
         <label class="form-label">Logradouro</label>
-        <input type="text" class="form-control" placeholder="Logradouro" />
+        <input
+          formControlName="logradouro"
+          type="text"
+          class="form-control"
+          placeholder="Logradouro"
+        />
       </div>
 
       <div class="col-md-2 mb-3">
         <label class="form-label">N°</label>
-        <input type="text" class="form-control" placeholder="N°" />
+        <input
+          formControlName="numero"
+          type="text"
+          class="form-control"
+          placeholder="N°"
+        />
       </div>
 
       <div class="col-md-3 mb-3">
         <label class="form-label">CEP</label>
-        <input type="text" class="form-control" placeholder="CEP" />
+        <input
+          formControlName="cep"
+          (input)="buscarEndereco()"
+          mask="00000-000"
+          type="text"
+          class="form-control"
+          placeholder="CEP"
+        />
       </div>
 
       <div class="col-md-5 mb-3">
         <label class="form-label">Bairro</label>
-        <input type="text" class="form-control" placeholder="Bairro" />
+        <input
+          formControlName="bairro"
+          type="text"
+          class="form-control"
+          placeholder="Bairro"
+        />
       </div>
 
       <div class="col-md-5 mb-3">
         <label class="form-label">Cidade</label>
-        <input type="text" class="form-control" placeholder="Cidade" />
+        <input
+          formControlName="cidade"
+          type="text"
+          class="form-control"
+          placeholder="Cidade"
+        />
       </div>
 
       <div class="col-md-2 mb-3">
         <label class="form-label">UF</label>
-        <input type="text" class="form-control" placeholder="UF" />
+        <input
+          formControlName="uf"
+          type="text"
+          class="form-control"
+          placeholder="UF"
+        />
       </div>
     </div>
     <hr />
@@ -66,7 +121,9 @@
         Adicionar Filho
       </button>
     </div>
-    <div class="row"></div>
+    <div class="row">
+      <div *ngFor="let item of listFilhos">a</div>
+    </div>
   </form>
 </div>
 <!-- Modal -->
@@ -97,21 +154,25 @@
             <div class="col-md-9 mb-3">
               <label class="form-label">Nome Completo</label>
               <input
+                required
                 formControlName="nome"
                 type="text"
                 class="form-control"
                 placeholder="Nome Completo"
               />
+              <small *ngIf="formModal.invalid"> *Campo obrigatório </small>
             </div>
 
             <div class="col-md-3 mb-3">
               <label class="form-label">Idade</label>
               <input
+                required
                 formControlName="idade"
                 type="text"
                 class="form-control"
                 placeholder="Idade"
               />
+              <small> *Campo obrigatório </small>
             </div>
           </div>
         </form>

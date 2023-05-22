@@ -1,5 +1,11 @@
+import { CepService } from './cep.service';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Validators } from '@angular/forms';
+class Filho {
+  nome!: string;
+  idade!: number;
+}
 
 @Component({
   selector: 'app-cadastro-caronas',
@@ -9,8 +15,9 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class CadastroCaronasComponent {
   form: FormGroup;
   formModal: FormGroup;
+  listFilhos: Filho[] = [];
 
-  constructor() {
+  constructor(private cepService: CepService) {
     this.form = new FormGroup({
       nome: new FormControl(),
       cpf: new FormControl(),
@@ -22,10 +29,31 @@ export class CadastroCaronasComponent {
       cidade: new FormControl(),
       uf: new FormControl(),
     });
+
     this.formModal = new FormGroup({
-      nome: new FormControl(),
-      idade: new FormControl(),
+      nome: new FormControl(null, [Validators.required]),
+      idade: new FormControl(null, [Validators.required]),
     });
   }
-  addFilho() {}
+
+  addFilho() {
+    if (this.formModal.invalid) {
+      return;
+    }
+    this.listFilhos.push(this.formModal.value);
+    this.formModal.reset();
+  }
+
+  buscarEndereco() {
+    if (String(this.form.controls['cep'].value).length == 8) {
+      this.cepService
+        .getByCep(this.form.controls['cep'].value)
+        .subscribe((resp: any) => {
+          this.form.controls['cidade'].setValue(resp.localidade);
+          this.form.controls['bairro'].setValue(resp.bairro);
+          this.form.controls['logradouro'].setValue(resp.logradouro);
+          this.form.controls['uf'].setValue(resp.uf);
+        });
+    }
+  }
 }
