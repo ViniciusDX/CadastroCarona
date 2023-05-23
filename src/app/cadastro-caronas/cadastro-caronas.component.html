@@ -121,8 +121,17 @@
         Adicionar Filho
       </button>
     </div>
-    <div class="row">
-      <div *ngFor="let item of listFilhos">a</div>
+    <!-- prettier-ignore -->
+    <div class="row m-3">
+        <ul *ngFor="let item of listFilhos; let i = index" class="list-group">
+          <li class="list-group-item d-flex justify-content-between">
+            <span>
+          {{item.nome + ' - ' + item.idade + ' anos'}}
+
+          </span>
+            <button type="button" class="btn btn-danger" (click)="excluirFilho(i)">Excluir</button>
+          </li>
+        </ul>
     </div>
   </form>
 </div>
@@ -160,7 +169,7 @@
                 class="form-control"
                 placeholder="Nome Completo"
               />
-              <small *ngIf="formModal.invalid"> *Campo obrigatório </small>
+              <small *ngIf="validarCampo('nome')"> *Campo obrigatório </small>
             </div>
 
             <div class="col-md-3 mb-3">
@@ -169,10 +178,11 @@
                 required
                 formControlName="idade"
                 type="text"
+                mask="00"
                 class="form-control"
                 placeholder="Idade"
               />
-              <small> *Campo obrigatório </small>
+              <small *ngIf="validarCampo('idade')"> *Campo obrigatório </small>
             </div>
           </div>
         </form>

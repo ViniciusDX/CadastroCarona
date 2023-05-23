@@ -38,11 +38,11 @@ export class CadastroCaronasComponent {
 
   addFilho() {
     if (this.formModal.invalid) {
+      this.formModal.markAllAsTouched();
       return;
     }
     this.listFilhos.push(this.formModal.value);
     this.formModal.reset();
-    console.log('');
   }
 
   buscarEndereco() {
@@ -56,5 +56,20 @@ export class CadastroCaronasComponent {
           this.form.controls['uf'].setValue(resp.uf);
         });
     }
+  }
+
+  validarCampo(campo: string) {
+    const control = this.formModal.controls[campo];
+
+    //prettier-ignore
+    if (control) {
+      return (control.errors ? control.errors['required'] : false) &&
+      (control.dirty || control.touched);
+    }
+    return false;
+  }
+
+  excluirFilho(index: number) {
+    this.listFilhos.splice(index, 1);
   }
 }
