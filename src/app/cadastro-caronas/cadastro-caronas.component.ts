@@ -42,6 +42,7 @@ export class CadastroCaronasComponent {
     }
     this.listFilhos.push(this.formModal.value);
     this.formModal.reset();
+    console.log('');
   }
 
   buscarEndereco() {
