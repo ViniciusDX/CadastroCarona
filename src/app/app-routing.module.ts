@@ -1,12 +1,18 @@
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { InicioComponent } from './inicio/inicio.component';
-import { CadastroCaronasComponent } from './cadastro-caronas/cadastro-caronas.component';
+
+import { ListagemCaronasComponent } from './views/carona/listagem-caronas/listagem-caronas.component';
+import { InicioComponent } from './views/inicio/inicio.component';
+import { CadastroCaronasComponent } from './views/carona/cadastro-caronas/cadastro-caronas.component';
 
 const routes: Routes = [
   {
     path: '',
     component: InicioComponent,
+  },
+  {
+    path: 'listagem',
+    component: ListagemCaronasComponent,
   },
   {
     path: 'cadastro',

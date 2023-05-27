@@ -1,0 +1,28 @@
+{
+  "caronas": [
+    {
+      "nome": "Maryanne",
+      "cpf": "12344455555",
+      "cnh": "4447788888888",
+      "logradouro": "sdsds",
+      "numero": "8888",
+      "cep": "62380000",
+      "bairro": "hsththths",
+      "cidade": "Guaraciaba-CE",
+      "uf": "CE",
+      "id": 1
+    },
+    {
+      "nome": "vinicius diniz",
+      "cpf": "07631075301",
+      "cnh": "12345678912",
+      "logradouro": "rua doutor araujo",
+      "numero": "12",
+      "cep": "62250000",
+      "bairro": "boa vista",
+      "cidade": "Ipu",
+      "uf": "CE",
+      "id": 2
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+<div class="card p-3">
+  <div class="d-flex justify-content-between">
+    <h3>Listagem de Caronas</h3>
+    <button class="btn btn-primary" routerLink="/cadastro">Novo</button>
+  </div>
+  <hr />
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="col">Nome</th>
+        <th class="col">CPF</th>
+        <th class="col">Endereço</th>
+        <th class="col">Bairro</th>
+        <th class="col">Cidade - UF</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let e of listaCaronas">
+        <td class="">{{ e.nome | titlecase }}</td>
+        <td class="">{{ e.cpf | mask : "000.000.000-00" }}</td>
+        <td class="">{{ e.logradouro | titlecase }}</td>
+        <td class="">{{ e.bairro | titlecase }}</td>
+        <td class="">{{ e.cidade + " - " + e.uf }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
